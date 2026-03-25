@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_LEFT" prefHeight="700.0" prefWidth="1000.0" spacing="20.0" style="-fx-background-color: #f8f9fa;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.bibliotech.issuebookController">
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="30.0" />
+    </padding>
+    <children>
+        <!-- Branding: Text Only -->
+        <Label text="BiblioTech" textFill="#2c3e50">
+            <font>
+                <Font name="System Bold" size="32.0" />
+            </font>
+        </Label>
+
+        <!-- Back Button -->
+        <Button mnemonicParsing="false" onAction="#handleBack" style="-fx-background-color: #ffffff; -fx-border-color: #ced4da; -fx-border-radius: 5; -fx-background-radius: 5; -fx-cursor: hand;" text="← Back">
+            <padding>
+                <Insets bottom="8.0" left="20.0" right="20.0" top="8.0" />
+            </padding>
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+
+        <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+            <children>
+                <VBox alignment="TOP_CENTER" maxWidth="650.0" prefWidth="650.0" spacing="25.0" style="-fx-background-color: #ffffff; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 5);">
+                    <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="40.0" />
+                    </padding>
+                    <children>
+                        <Label alignment="TOP_LEFT" maxWidth="Infinity" text="Issue Book" textFill="#212529">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="0.0" right="0.0" top="0.0" />
+                            </VBox.margin>
+                        </Label>
+
+                        <VBox spacing="15.0">
+                            <children>
+                                <VBox spacing="8.0">
+                                    <Label text="Book Name" textFill="#495057">
+                                        <font><Font name="System Bold" size="13.0" /></font>
+                                    </Label>
+                                    <ComboBox fx:id="booknamePicker" maxWidth="Infinity" promptText="- Select Available Book -" style="-fx-pref-height: 45; -fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-radius: 5;" />
+                                </VBox>
+
+                                <HBox spacing="20.0">
+                                    <children>
+                                        <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label text="Student ID" textFill="#495057">
+                                                    <font><Font name="System Bold" size="13.0" /></font>
+                                                </Label>
+                                                <!-- EDITED: Changed Student ID TextField to ComboBox -->
+                                                <ComboBox fx:id="studentidPicker" maxWidth="Infinity" promptText="- Select Member ID -" style="-fx-pref-height: 45; -fx-background-color: #ffffff; -fx-border-color: #dee2e6; -fx-border-radius: 5;" />
+                                            </children>
+                                        </VBox>
+                                        <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                                            <Label text="Book Number" textFill="#495057">
+                                                <font><Font name="System Bold" size="13.0" /></font>
+                                            </Label>
+                                            <TextField fx:id="booknumField" editable="false" promptText="Book Number" style="-fx-pref-height: 45; -fx-background-radius: 5; -fx-border-color: #dee2e6; -fx-border-radius: 5; -fx-background-color: #f8f9fa;" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <Label text="Issue Date" textFill="#495057">
+                                    <font><Font name="System Bold" size="13.0" /></font>
+                                </Label>
+
+                                <HBox spacing="20.0">
+                                    <children>
+                                        <VBox spacing="8.0" HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <DatePicker fx:id="issuedatepicker" maxWidth="Infinity" promptText="2024-01-11" style="-fx-pref-height: 45; -fx-background-radius: 5;" />
+                                            </children>
+                                        </VBox>
+                                        <VBox spacing="8.0" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <Button mnemonicParsing="false" onAction="#issuedone" prefWidth="250.0" style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;" text="Issue Book">
+                            <font><Font size="16.0" /></font>
+                            <padding><Insets bottom="12.0" left="0.0" right="0.0" top="12.0" /></padding>
+                            <VBox.margin><Insets bottom="0.0" left="0.0" right="0.0" top="15.0" /></VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>

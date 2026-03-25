@@ -1,0 +1,53 @@
+/* Center background */
+.stack-pane {
+    -fx-background-color: #f4f6f8;
+}
+
+
+/* Welcome card styling */
+.welcome-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 40 60 40 60;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 20, 0, 0, 6);
+
+    -fx-border-radius: 15;
+    -fx-border-color: #e6e6e6;
+}
+
+/* Center background */
+.stack-pane {
+    -fx-background-color: #f4f6f8;
+}
+
+
+/* Welcome card styling */
+.welcome-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 40 60 40 60;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 20, 0, 0, 6);
+
+    -fx-border-radius: 15;
+    -fx-border-color: #e6e6e6;
+}
+
+
+/* Welcome text */
+.welcome-main {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-fill: #2c3e50;
+    -fx-font-family: "Segoe UI";
+}
+/* Welcome text */
+.welcome-main {
+    .welcome-main {
+        -fx-font-size: 32px;
+        -fx-font-weight: bold;
+        -fx-text-fill: #2c3e50;
+        -fx-font-family: "Segoe UI";
+    }
+}

@@ -1,0 +1,19 @@
+/* Welcome Card */
+.welcome-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 12;
+    -fx-padding: 25;
+
+    /* Soft shadow */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 20, 0, 0, 4);
+}
+
+/* Single-line welcome text */
+.welcome-main {
+    -fx-fill: #2c3e50;
+    -fx-font-family: "Calibri";
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
