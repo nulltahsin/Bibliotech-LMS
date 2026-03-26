@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: linear-gradient(to bottom right, #fdfbfb 0%, #ebedee 100%);" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.bibliotech.SignupController">
+    <children>
+        <VBox alignment="CENTER" layoutX="225.0" layoutY="50.0" prefHeight="500.0" prefWidth="350.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);">
+            <padding>
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            </padding>
+            <children>
+                <Label text="Join BiblioTech" textFill="#2c3e50">
+                    <font>
+                        <Font name="Segoe UI Bold" size="28.0" />
+                    </font>
+                </Label>
+                <Label text="Create your member account" textFill="#95a5a6">
+                    <font>
+                        <Font name="Segoe UI" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </Label>
+
+                <!-- Input Fields in New Order -->
+                <TextField fx:id="nameField" promptText="Full Name" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #dcdde1; -fx-padding: 8 15;" />
+                <TextField fx:id="deptField" promptText="Department" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #dcdde1; -fx-padding: 8 15;" />
+                <TextField fx:id="batchField" promptText="Batch" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #dcdde1; -fx-padding: 8 15;" />
+                <TextField fx:id="emailField" promptText="Email Address" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #dcdde1; -fx-padding: 8 15;" />
+
+                <!-- Combined Password / ID field at the end -->
+                <PasswordField fx:id="passwordIdField" promptText="Password / ID" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #dcdde1; -fx-padding: 8 15;" />
+
+                <Button mnemonicParsing="false" onAction="#handleSignup" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 25; -fx-cursor: hand;" text="REGISTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                </Button>
+
+                <Button mnemonicParsing="false" onAction="#handleBackToLogin" style="-fx-background-color: transparent; -fx-cursor: hand;" text="← Back to Login" textFill="#3498db">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

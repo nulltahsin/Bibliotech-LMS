@@ -75,7 +75,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="98.0" prefWidth="449.0">
                      <children>
-                        <Button fx:id="signupBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="83.0" style="-fx-background-radius: 50; -fx-background-color: #ed6637; -fx-border-radius: 50;" text="Sign Up">
+                        <Button fx:id="signupBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleGoToSignup" prefHeight="38.0" prefWidth="83.0" style="-fx-background-radius: 50; -fx-background-color: #ed6637; -fx-border-radius: 50;" text="Sign Up">
                            <font>
                               <Font name="System Bold Italic" size="16.0" />
                            </font>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.buet.bibliotech.AcceptReturnController"
+      prefWidth="600.0" prefHeight="450.0" spacing="15.0" style="-fx-padding: 20;">
+
+    <children>
+        <Button text="← Back" onAction="#handleBack" style="-fx-cursor: hand;"/>
+        <Label text="Return Requests" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+        <TableView fx:id="returnTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colBookId" text="Book ID" prefWidth="100"/>
+                <TableColumn fx:id="colBookName" text="Book Name" prefWidth="200"/>
+                <TableColumn fx:id="colMemberId" text="Member ID" prefWidth="100"/>
+                <TableColumn fx:id="colAction" text="Action" prefWidth="150"/>
+            </columns>
+        </TableView>
+    </children>
+</VBox>

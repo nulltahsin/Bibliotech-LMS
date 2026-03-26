@@ -47,6 +47,20 @@ public class DashboardController implements Initializable {
 
 
     @FXML
+    public void handleAcceptReturn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("accept_return.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Accept Return Requests");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void memberspageshow(ActionEvent event){
       try{
           FXMLLoader loader=new FXMLLoader(getClass().getResource("memberspage.fxml"));

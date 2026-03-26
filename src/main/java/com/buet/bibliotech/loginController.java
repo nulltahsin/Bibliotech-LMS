@@ -72,6 +72,26 @@ public class loginController {
         }
     }
 
+
+
+    @FXML
+    private void handleGoToSignup(ActionEvent event) {
+        try {
+            // signup.fxml লোড করা হচ্ছে
+            Parent root = FXMLLoader.load(getClass().getResource("signup.fxml"));
+
+            // বর্তমান স্টেজ (উইন্ডো) খুঁজে বের করা
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // নতুন সিন (Scene) সেট করা
+            stage.setScene(new Scene(root));
+            stage.setTitle("Join BiblioTech - Signup");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading Signup page");
+        }
+    }
     /**
      * Helper method to switch scenes
      */

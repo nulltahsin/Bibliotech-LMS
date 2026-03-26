@@ -155,7 +155,7 @@
                         <!-- Action Buttons Row -->
                         <HBox alignment="CENTER" prefHeight="80.0" spacing="20.0">
                             <VBox.margin><Insets bottom="20.0" left="20.0" right="20.0" top="5.0" /></VBox.margin>
-                            <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #5B9BD5; -fx-background-radius: 10;" text="Accept Return" textFill="WHITE">
+                            <Button mnemonicParsing="false" onAction="#handleAcceptReturn" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #5B9BD5; -fx-background-radius: 10;" text="Accept Return" textFill="WHITE">
                                 <font><Font name="System Bold" size="16.0" /></font>
                             </Button>
                             <Button mnemonicParsing="false" onAction="#handleIssueBook" prefHeight="50.0" prefWidth="350.0" style="-fx-background-color: #70AD47; -fx-background-radius: 10;" text="Issue Book" textFill="WHITE">

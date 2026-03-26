@@ -8,18 +8,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import java.io.IOException;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class BooksController implements Initializable {
@@ -34,11 +39,10 @@ public class BooksController implements Initializable {
     private TableColumn<Books, String> colAuthor;
     @FXML
     private TableColumn<Books, String> colCategory;
-    @FXML
-    public Label TotalBooksLabel;
-    @FXML
-    public Label AvailableBooksLabel;
 
+    // নতুন Action কলাম যুক্ত করা হলো
+    @FXML
+    private TableColumn<Books, Void> colAction;
 
     @FXML
     private TextField searchBooksText;
@@ -51,33 +55,67 @@ public class BooksController implements Initializable {
             colAuthor.setCellValueFactory(new PropertyValueFactory<>("Author"));
             colCategory.setCellValueFactory(new PropertyValueFactory<>("Category"));
 
-            updateSummaryLabels();
-            setupSearchFilter();
+            // ডিলিট বাটন সেটআপ কল করা হলো
+            setupActionColumn();
 
+            setupSearchFilter();
         }
     }
 
-    private void updateSummaryLabels() {
-        Database db = Database.getInstance();
+    // নতুন মেথড: Action কলামে ডিলিট বাটন বসানোর জন্য
+    private void setupActionColumn() {
+        colAction.setCellFactory(param -> new TableCell<>() {
+            private final Button btnDelete = new Button("🗑");
 
+            {
+                btnDelete.setStyle("-fx-background-color: transparent; -fx-text-fill: red; -fx-cursor: hand; -fx-font-size: 16px;");
+                btnDelete.setOnAction(e -> {
+                    Books book = getTableView().getItems().get(getIndex());
+                    deleteBookAction(book);
+                });
+                setAlignment(Pos.CENTER);
+            }
 
-        int totalBooks = db.getTotalBooksCount();
-        int availablebooks = db.getAvailableBooksCount();
-
-        TotalBooksLabel.setText(String.valueOf(totalBooks));
-        AvailableBooksLabel.setText(String.valueOf(availablebooks));
-
-
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btnDelete);
+                }
+            }
+        });
     }
 
+    // নতুন মেথড: ডাটাবেস থেকে বই ডিলিট করার লজিক
+    private void deleteBookAction(Books book) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Book");
+        alert.setHeaderText("Are you sure you want to delete this book?");
+        alert.setContentText("Book Title: " + book.getBookName());
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Database db = Database.getInstance();
+            if (db.deleteBook(book.getBookID())) {
+                // ডিলিট সফল হলে টেবিল রিফ্রেশ করা হবে
+                setupSearchFilter();
+            } else {
+                Alert errAlert = new Alert(Alert.AlertType.ERROR);
+                errAlert.setTitle("Error");
+                errAlert.setHeaderText(null);
+                errAlert.setContentText("Could not delete the book. It might be issued to a member.");
+                errAlert.showAndWait();
+            }
+        }
+    }
 
     private void setupSearchFilter() {
         Database db = Database.getInstance();
         ObservableList<Books> masterData = db.getAvailableBooks();
 
-
         FilteredList<Books> filteredData = new FilteredList<>(masterData, p -> true);
-
 
         searchBooksText.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(book -> {
@@ -85,7 +123,6 @@ public class BooksController implements Initializable {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
@@ -99,19 +136,18 @@ public class BooksController implements Initializable {
             });
         });
 
-
         SortedList<Books> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(booksTable.comparatorProperty());
-
 
         booksTable.setItems(sortedData);
     }
 
+    private void loadData() {
 
+    }
 
     public void searchBooks(ActionEvent actionEvent) {
         // this is now empty
-
     }
 
     public void AddBook(ActionEvent actionEvent) {

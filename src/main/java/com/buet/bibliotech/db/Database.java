@@ -40,7 +40,7 @@ public class Database {
         String usersTable = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL UNIQUE, password TEXT NOT NULL);";
         String membersTable = "CREATE TABLE IF NOT EXISTS members (id TEXT PRIMARY KEY, name TEXT NOT NULL, department TEXT, batch TEXT, email TEXT, password TEXT DEFAULT '1234');";
         String booksTable = "CREATE TABLE IF NOT EXISTS books (bookid TEXT PRIMARY KEY, bookname TEXT NOT NULL, author TEXT, category TEXT);";
-        String issueTable = "CREATE TABLE IF NOT EXISTS issue (bookID TEXT PRIMARY KEY, memberID TEXT, issueTime TEXT, FOREIGN KEY (bookID) REFERENCES books(bookid), FOREIGN KEY (memberID) REFERENCES members(id));";
+        String issueTable = "CREATE TABLE IF NOT EXISTS issue (bookID TEXT PRIMARY KEY, memberID TEXT, issueTime TEXT, status TEXT DEFAULT 'Borrowed', FOREIGN KEY (bookID) REFERENCES books(bookid), FOREIGN KEY (memberID) REFERENCES members(id));";
 
 
         String requestTable = "CREATE TABLE IF NOT EXISTS requests (bookID TEXT PRIMARY KEY, memberID TEXT, requestTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (bookID) REFERENCES books(bookid), FOREIGN KEY (memberID) REFERENCES members(id));";
@@ -140,15 +140,49 @@ public class Database {
 
     public ObservableList<IssueInfo> getPendingReturns() {
         ObservableList<IssueInfo> list = FXCollections.observableArrayList();
-        String query = "SELECT issue.bookID, books.bookname, issue.memberID, members.name, issue.issueTime FROM issue JOIN books ON issue.bookID = books.bookid JOIN members ON issue.memberID = members.id";
+        String query = """
+            SELECT issue.bookID, books.bookname, issue.memberID, members.name, issue.issueTime 
+            FROM issue 
+            JOIN books ON issue.bookID = books.bookid 
+            JOIN members ON issue.memberID = members.id
+            """; // এখানে কোনো WHERE কন্ডিশন নেই
+
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
-                list.add(new IssueInfo(rs.getString("bookID"), rs.getString("bookname"), rs.getString("memberID"), rs.getString("name"), rs.getString("issueTime")));
+                list.add(new IssueInfo(
+                        rs.getString("bookID"), rs.getString("bookname"),
+                        rs.getString("memberID"), rs.getString("name"), rs.getString("issueTime")
+                ));
             }
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
+    // এই মেথডটি শুধুমাত্র "Accept Return" উইন্ডোর জন্য (শুধুমাত্র আপিল করা বই দেখাবে)
+    public ObservableList<IssueInfo> getReturnRequests() {
+        ObservableList<IssueInfo> list = FXCollections.observableArrayList();
+        String query = """
+            SELECT issue.bookID, books.bookname, issue.memberID, members.name, issue.issueTime 
+            FROM issue 
+            JOIN books ON issue.bookID = books.bookid 
+            JOIN members ON issue.memberID = members.id
+            WHERE issue.status = 'Pending Return' 
+            """; // এখানে WHERE কন্ডিশন আছে
+
+        try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+            while (rs.next()) {
+                list.add(new IssueInfo(
+                        rs.getString("bookID"), rs.getString("bookname"),
+                        rs.getString("memberID"), rs.getString("name"), rs.getString("issueTime")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     public member getMemberById(String memberId) {
         String query = "SELECT * FROM members WHERE id = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -207,7 +241,6 @@ public class Database {
 
     public javafx.collections.ObservableList<com.buet.bibliotech.BorrowedBookModel> getBorrowedBooksByMember(String memberId) {
         javafx.collections.ObservableList<com.buet.bibliotech.BorrowedBookModel> list = javafx.collections.FXCollections.observableArrayList();
-        // query joins issue and books tables to get the name based on the ID in issue
         String query = "SELECT books.bookname, books.author, books.bookid FROM issue JOIN books ON issue.bookID = books.bookid WHERE issue.memberID = ?";
 
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -215,12 +248,12 @@ public class Database {
             ResultSet rs = pstmt.executeQuery();
             int serial = 1;
             while (rs.next()) {
-                String bookID=rs.getString("bookid");
-                String bookname=rs.getString("bookname");
-                String author=rs.getString("author");
-                serial=serial+1;
+                String bookID = rs.getString("bookid");
+                String bookname = rs.getString("bookname");
+                String author = rs.getString("author");
+
                 list.add(new com.buet.bibliotech.BorrowedBookModel(
-                        String.valueOf(serial),
+                        String.valueOf(serial++), // Increment serial properly
                         bookname,
                         bookID,
                         author
@@ -229,7 +262,7 @@ public class Database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return list;
+        return list; // Return the list of models!
     }
 
     public boolean deleteMember(String memberId) {
@@ -365,4 +398,64 @@ public class Database {
 
     }
 
+
+    public boolean validateMemberLogin(String name, String id) {
+        String query = "SELECT * FROM members WHERE name = ? AND id = ?";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, name);
+            pstmt.setString(2, id);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public boolean approveReturn(String bookId) {
+        String query = "DELETE FROM issue WHERE bookID = ?";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, bookId);
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public boolean rejectReturn(String bookId) {
+        String query = "UPDATE issue SET status = 'Borrowed' WHERE bookID = ?";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, bookId);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean requestBookReturn(String bookName) {
+        String query = "UPDATE issue SET status = 'Pending Return' WHERE bookID IN (SELECT bookid FROM books WHERE bookname = ?)";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, bookName);
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) { e.printStackTrace(); return false; }
+    }
+
+
+    public boolean deleteBook(String bookId) {
+        String query = "DELETE FROM books WHERE bookid = ?";
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setString(1, bookId);
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     }
