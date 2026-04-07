@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="780.0" style="-fx-background-color: #f8f2e6;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.bibliotech.loginController">
+   <right>
+      <VBox alignment="CENTER" prefWidth="332.0" styleClass="vbox_background_right" stylesheets="@loginPage.css" BorderPane.alignment="BOTTOM_CENTER">
+         <children>
+            <!-- Username/Name Input -->
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="332.0">
+               <children>
+                  <TextField fx:id="usernamefield" prefHeight="40.0" prefWidth="307.0" promptText="Username / Name" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+
+            <!-- Password/ID Input -->
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="332.0">
+               <children>
+                  <TextField fx:id="passwordfield" prefHeight="40.0" prefWidth="307.0" promptText="Password / ID" style="-fx-background-radius: 50; -fx-border-radius: 50;">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+
+            <!-- Role Selection: Admin or Member -->
+            <HBox alignment="CENTER" prefHeight="40.0" prefWidth="332.0" spacing="25.0">
+               <children>
+                  <RadioButton fx:id="adminRadio" mnemonicParsing="false" selected="true" text="Admin" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="roleGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="memberRadio" mnemonicParsing="false" text="Member" textFill="WHITE" toggleGroup="$roleGroup">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </HBox>
+
+            <!-- Login Button -->
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="332.0">
+               <children>
+                  <Button fx:id="loginBtn" mnemonicParsing="false" onAction="#doLogin" prefHeight="35.0" prefWidth="85.0" style="-fx-background-radius: 50; -fx-background-color: #ed6637; -fx-cursor: hand;" text="Login" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <VBox prefWidth="449.0" styleClass="vbox_background_center" stylesheets="@loginPage.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="98.0" prefWidth="449.0">
+                     <children>
+                        <Button fx:id="signupBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleGoToSignup" prefHeight="38.0" prefWidth="83.0" style="-fx-background-radius: 50; -fx-background-color: #ed6637; -fx-border-radius: 50;" text="Sign Up">
+                           <font>
+                              <Font name="System Bold Italic" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="364.0" prefWidth="448.0">
+               <children>
+                  <Text fill="#180c0c" strokeType="OUTSIDE" strokeWidth="0.0" text="BiblioTech">
+                     <font>
+                        <Font name="Impact" size="64.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

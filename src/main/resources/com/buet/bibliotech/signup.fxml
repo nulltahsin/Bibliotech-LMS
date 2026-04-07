@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #0b1324;" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.bibliotech.SignupController">
+    <children>
+        <!-- Centered Registration Card -->
+        <VBox alignment="CENTER" layoutX="225.0" layoutY="50.0" prefHeight="500.0" prefWidth="350.0" spacing="15.0" style="-fx-background-color: #111c30; -fx-background-radius: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 15, 0, 0, 8);">
+            <padding>
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            </padding>
+            <children>
+                <Label text="Join BiblioTech" textFill="#f2f5f9">
+                    <font>
+                        <Font name="Segoe UI Bold" size="28.0" />
+                    </font>
+                </Label>
+                <Label text="Create your member account" textFill="#c7d1e0">
+                    <font>
+                        <Font name="Segoe UI" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </Label>
+
+                <!-- Input Fields Styled for Dark Theme -->
+                <TextField fx:id="nameField" promptText="Full Name" style="-fx-background-color: #0b1324; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #223149; -fx-padding: 8 15;" />
+
+                <TextField fx:id="deptField" promptText="Department" style="-fx-background-color: #0b1324; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #223149; -fx-padding: 8 15;" />
+
+                <TextField fx:id="batchField" promptText="Batch" style="-fx-background-color: #0b1324; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #223149; -fx-padding: 8 15;" />
+
+                <TextField fx:id="emailField" promptText="Email Address" style="-fx-background-color: #0b1324; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #223149; -fx-padding: 8 15;" />
+
+                <!-- Password / ID Field -->
+                <PasswordField fx:id="passwordIdField" promptText="Set Password" style="-fx-background-color: #0b1324; -fx-text-fill: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #223149; -fx-padding: 8 15;" />
+
+                <!-- Action Button using Accent Red -->
+                <Button mnemonicParsing="false" onAction="#handleSignup" prefHeight="45.0" prefWidth="270.0" style="-fx-background-color: #8b0e20; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 25; -fx-cursor: hand;" text="REGISTER">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="15.0" />
+                    </VBox.margin>
+                </Button>
+
+                <!-- Navigation Button -->
+                <Button mnemonicParsing="false" onAction="#handleBackToLogin" style="-fx-background-color: transparent; -fx-cursor: hand;" text="← Back to Login" textFill="#c7d1e0">
+                    <font>
+                        <Font size="13.0" />
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

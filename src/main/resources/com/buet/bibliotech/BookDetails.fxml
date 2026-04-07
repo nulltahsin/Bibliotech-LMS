@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefWidth="500.0" spacing="0.0" style="-fx-background-color: #0b1324;" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.bibliotech.BookDetailsController">
+    <children>
+        <!-- Header Strip -->
+        <HBox prefHeight="5.0" style="-fx-background-color: #1f3b6a;" />
+
+        <HBox spacing="25.0" style="-fx-padding: 30;">
+            <children>
+                <!-- Book Cover Side -->
+                <VBox alignment="TOP_CENTER" spacing="10.0">
+                    <children>
+                        <VBox style="-fx-border-color: #223149; -fx-border-width: 2; -fx-border-radius: 5; -fx-padding: 5;">
+                            <children>
+                                <ImageView fx:id="coverImageView" fitHeight="240.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
+                            </children>
+                        </VBox>
+                        <Label fx:id="stockLabel" text="Stock: 0 / 0" textFill="#00B894">
+                            <font><Font name="System Bold" size="14.0" /></font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <!-- Details Side -->
+                <VBox spacing="12.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="titleLabel" text="Book Title" textFill="#f2f5f9" wrapText="true">
+                            <font><Font name="System Bold" size="22.0" /></font>
+                        </Label>
+                        <Label fx:id="authorLabel" text="Author Name" textFill="#c7d1e0">
+                            <font><Font size="16.0" /></font>
+                        </Label>
+
+                        <VBox spacing="8.0" style="-fx-padding: 15 0 0 0;">
+                            <children>
+                                <Label fx:id="idLabel" text="Book ID: #000" textFill="#8b9bb4">
+                                    <font><Font name="Monospaced Regular" size="14.0" /></font>
+                                </Label>
+                                <Label fx:id="categoryLabel" text="Category: Generic" textFill="#8b9bb4">
+                                    <font><Font size="14.0" /></font>
+                                </Label>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>

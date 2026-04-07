@@ -1,0 +1,77 @@
+/* Center background */
+.stack-pane {
+    -fx-background-color: #f4f6f8;
+}
+
+
+/* Welcome card styling */
+.welcome-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 40 60 40 60;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 20, 0, 0, 6);
+
+    -fx-border-radius: 15;
+    -fx-border-color: #e6e6e6;
+}
+
+/* Center background */
+.stack-pane {
+    -fx-background-color: #f4f6f8;
+}
+
+
+/* Welcome card styling */
+.welcome-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 40 60 40 60;
+
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 20, 0, 0, 6);
+
+    -fx-border-radius: 15;
+    -fx-border-color: #e6e6e6;
+}
+
+
+/* Welcome text */
+.welcome-main {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-fill: #2c3e50;
+    -fx-font-family: "Segoe UI";
+}
+/* Welcome text */
+.welcome-main {
+    .welcome-main {
+        -fx-font-size: 32px;
+        -fx-font-weight: bold;
+        -fx-text-fill: #2c3e50;
+        -fx-font-family: "Segoe UI";
+    }
+}
+
+
+/* Sidebar Button Styling */
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f2f5f9;
+    -fx-cursor: hand;
+    -fx-alignment: BASELINE_LEFT;
+}
+
+/* Hover Effect: Glow and Background change */
+.sidebar-button:hover {
+    -fx-background-color: #1a263e; /* Lighter navy than the sidebar */
+    -fx-text-fill: #ffffff;
+    /* Soft white glow around the text */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.2), 10, 0, 0, 0);
+}
+
+/* Pressed Effect: Deepen the color when clicked */
+.sidebar-button:pressed {
+    -fx-background-color: #223149;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}

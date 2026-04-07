@@ -1,0 +1,370 @@
+/* BiblioTech dark red / dark blue theme */
+
+.root {
+    -fx-font-family: "Segoe UI", "Inter", "Arial";
+    -fx-background-color: #0b1324;
+    -fx-text-fill: #f2f5f9;
+}
+
+.label, .text {
+    -fx-text-fill: #f2f5f9;
+}
+
+.text-input, .text-field, .password-field {
+    -fx-background-color: #111c30;
+    -fx-text-fill: #f2f5f9;
+    -fx-prompt-text-fill: #f2f5f9;
+    -fx-border-color: #223149;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.button {
+    -fx-background-color: #1f3b6a;
+    -fx-text-fill: #f2f5f9;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #27477b;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 10, 0.2, 0, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #8b0e20;
+}
+
+.radio-button, .check-box {
+    -fx-text-fill: #f2f5f9;
+}
+
+.radio-button .radio {
+    -fx-background-color: #111c30;
+    -fx-border-color: #223149;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: #8b0e20;
+    -fx-border-color: #8b0e20;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: #f2f5f9;
+}
+
+.table-view {
+    -fx-background-color: #111c30;
+    -fx-control-inner-background: #111c30;
+    -fx-table-cell-border-color: #223149;
+    -fx-border-color: #223149;
+    -fx-padding: 10;
+}
+
+.table-view .column-header-background,
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: #0f1a2e;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #f2f5f9;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f2f5f9;
+    -fx-padding: 6 0 6 0;
+}
+
+.table-row-cell:filled {
+    -fx-background-color: #111c30;
+    -fx-background-insets: 0 0 8 0;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 10, 0.2, 0, 2);
+}
+
+.table-row-cell:filled:odd {
+    -fx-background-color: #0f1a2e;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #8b0e20;
+}
+
+.table-row-cell:filled:selected .text {
+    -fx-fill: #f2f5f9;
+}
+
+.table-cell {
+    -fx-padding: 10 12 10 12;
+    -fx-border-color: transparent;
+}
+
+.separator *.line {
+    -fx-border-color: #223149;
+}
+
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: #0b1324;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #223149;
+}
+
+.app-header {
+    -fx-background-color: #0f1a2e;
+}
+
+.app-sidebar {
+    -fx-background-color: #111d33;
+}
+
+.app-surface {
+    -fx-background-color: #111c30;
+}
+
+.app-card {
+    -fx-background-color: #16253f;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #223149;
+}
+
+.accent-red {
+    -fx-background-color: #8b0e20;
+}
+
+.accent-blue {
+    -fx-background-color: #1f3b6a;
+}
+
+.text-secondary {
+    -fx-text-fill: #c7d1e0;
+}
+
+.emoji-pill {
+    -fx-background-color: #f2f5f9;
+    -fx-text-fill: #0b1324;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-padding: 2 6 2 6;
+    -fx-font-size: 12px;
+}
+
+.dialog-pane.app-dialog {
+    -fx-background-color: #111c30;
+    -fx-border-color: #223149;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.dialog-pane.app-dialog .header-panel {
+    -fx-background-color: #0f1a2e;
+}
+
+.dialog-pane.app-dialog .header-panel .label {
+    -fx-text-fill: #f2f5f9;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane.app-dialog .content.label {
+    -fx-text-fill: #c7d1e0;
+}
+
+.dialog-pane.app-dialog .button-bar .button {
+    -fx-background-color: #1f3b6a;
+    -fx-text-fill: #f2f5f9;
+}
+
+.dialog-pane.app-dialog .button-bar .button:default {
+    -fx-background-color: #8b0e20;
+}
+
+
+.register-card {
+    -fx-background-color: #111c30;
+    -fx-border-color: #223149;
+    -fx-border-width: 1.2;
+    -fx-background-radius: 18;
+    -fx-border-radius: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 14, 0.2, 0, 4);
+}
+
+.register-card:hover {
+    -fx-border-color: #1f3b6a;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 18, 0.25, 0, 6);
+}
+
+.register-field {
+    -fx-background-color: #0f1a2e;
+    -fx-text-fill: #f2f5f9;
+    -fx-prompt-text-fill: #f2f5f9;
+    -fx-border-color: #223149;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 10 14 10 14;
+}
+
+.register-field:hover {
+    -fx-border-color: #27477b;
+}
+
+.register-field:focused {
+    -fx-border-color: #8b0e20;
+}
+
+.member-id-field {
+    -fx-background-color: #0f1a2e;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #ffffff;
+    -fx-border-color: #223149;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10 14 10 14;
+}
+
+.addbook-card {
+    -fx-background-color: #111c30;
+    -fx-border-color: #223149;
+    -fx-border-width: 1.2;
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 16, 0.2, 0, 4);
+}
+
+.addbook-card:hover {
+    -fx-border-color: #1f3b6a;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.45), 18, 0.25, 0, 6);
+}
+
+.addbook-field {
+    -fx-background-color: #0f1a2e;
+    -fx-text-fill: #f2f5f9;
+    -fx-prompt-text-fill: #f2f5f9;
+    -fx-border-color: #223149;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10 14 10 14;
+}
+
+.addbook-field:hover {
+    -fx-border-color: #27477b;
+}
+
+.addbook-field:focused {
+    -fx-border-color: #8b0e20;
+}
+
+.addbook-id-field {
+    -fx-background-color: #f2f5f9;
+    -fx-text-fill: #000000;
+    -fx-prompt-text-fill: #000000;
+    -fx-border-color: #223149;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 10 14 10 14;
+}
+
+.addbook-primary {
+    -fx-background-color: #1f3b6a;
+    -fx-text-fill: #f2f5f9;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.addbook-secondary {
+    -fx-background-color: #111c30;
+    -fx-text-fill: #f2f5f9;
+    -fx-border-color: #223149;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+/* Fix Chart Labels and Axes for Dark Theme */
+
+.chart-pie-label {
+    -fx-fill: #f2f5f9;
+    -fx-font-weight: bold;
+}
+
+.axis-label {
+    -fx-text-fill: #f2f5f9;
+}
+
+.axis {
+    -fx-tick-label-fill: #f2f5f9;
+}
+
+.chart-legend {
+    -fx-background-color: transparent;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #f2f5f9;
+}
+
+/* Custom Colors for Chart Slices to match your theme */
+.default-color0.chart-pie { -fx-pie-color: #8b0e20; } /* Dark Red */
+.default-color1.chart-pie { -fx-pie-color: #1f3b6a; } /* Deep Navy */
+.default-color2.chart-pie { -fx-pie-color: #00B894; } /* Teal */
+.default-color3.chart-pie { -fx-pie-color: #E67E22; } /* Orange */
+
+/* Bar Chart Colors */
+.default-color0.chart-bar { -fx-bar-fill: #1f3b6a; }
+
+/* Sidebar Button Hover Effect */
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f2f5f9;
+    -fx-cursor: hand;
+    -fx-transition: 0.3s; /* Smooth transition */
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #1a263e; /* Slightly lighter navy */
+    -fx-text-fill: #ffffff;
+    /* Subtle outer glow */
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.15), 10, 0, 0, 0);
+}
+
+/* Primary Action Button Glow (Issue New Book) */
+.primary-button {
+    -fx-background-color: #1f3b6a;
+    -fx-text-fill: white;
+    -fx-background-radius: 25;
+}
+
+.primary-button:hover {
+    -fx-background-color: #2a4e8a; /* Brighter Blue */
+    /* Strong Blue Glow */
+    -fx-effect: dropshadow(three-pass-box, rgba(31, 59, 106, 0.8), 15, 0, 0, 0);
+    -fx-translate-y: -1; /* Slight "lift" effect */
+}
+
+/* --- GLOBAL TEXTFIELD THEME FIX --- */
+.text-field, .password-field {
+    -fx-control-inner-background: #0b1324; /* This stops the white background bug */
+    -fx-background-color: #0b1324;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #8b9bb4;
+    -fx-highlight-fill: #1f3b6a; /* Color when you select text */
+}
+
+/* This handles the state when you click the field to type */
+.text-field:focused, .password-field:focused {
+    -fx-background-color: #0b1324;
+    -fx-border-color: #00d4ff; /* Adds an electric blue glow on focus */
+    -fx-control-inner-background: #0b1324;
+}
+
+/* This handles the 'ReadOnly' state (like your Member ID) */
+.text-field:readonly {
+    -fx-background-color: #1a263e;
+    -fx-text-fill: #8b9bb4;
+    -fx-control-inner-background: #1a263e;
+}

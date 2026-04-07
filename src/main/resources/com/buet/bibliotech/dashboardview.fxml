@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.buet.bibliotech.DashboardController">
+    <children>
+        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <!-- TOP SECTION -->
+            <top>
+                <AnchorPane prefHeight="88.0" prefWidth="1000.0" style="-fx-background-color: #111c30; -fx-border-color: #223149; -fx-border-width: 0 0 1 0;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Text fill="#f2f5f9" layoutX="20.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BiblioTech" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="30.0">
+                            <font><Font name="Impact" size="28.0" /></font>
+                        </Text>
+                        <HBox prefHeight="23.0" style="-fx-background-color: #0f1a2e;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    </children>
+                </AnchorPane>
+            </top>
+
+            <!-- SIDEBAR -->
+            <left>
+                <AnchorPane prefWidth="223.0" style="-fx-background-color: #0f1a2e;" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox layoutY="20.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                            <children>
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#bookspageshow" prefHeight="43.0" prefWidth="223.0" styleClass="sidebar-button" text="• Books">
+                                    <font><Font name="Calibri" size="16.0" /></font>
+                                    <VBox.margin><Insets left="10.0" right="10.0" top="5.0" /></VBox.margin>
+                                </Button>
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#memberspageshow" prefHeight="43.0" prefWidth="223.0" styleClass="sidebar-button" text="• Members">
+                                    <font><Font name="Calibri" size="16.0" /></font>
+                                    <VBox.margin><Insets left="10.0" right="10.0" top="5.0" /></VBox.margin>
+                                </Button>
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#PendingRequests" prefHeight="43.0" prefWidth="223.0" styleClass="sidebar-button" text="• Pending Requests">
+                                    <font><Font name="Calibri" size="16.0" /></font>
+                                    <VBox.margin><Insets left="10.0" right="10.0" top="5.0" /></VBox.margin>
+                                </Button>
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleAcceptReturn" prefHeight="43.0" prefWidth="223.0" styleClass="sidebar-button" text="• Review Returns">
+                                    <font><Font name="Calibri" size="16.0" /></font>
+                                    <VBox.margin><Insets left="10.0" right="10.0" top="5.0" /></VBox.margin>
+                                </Button>
+                                <Button fx:id="btnIssuedBooks" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#PendingReturns" prefHeight="43.0" prefWidth="223.0" styleClass="sidebar-button" text="• Issued Books">
+                                    <font><Font name="Calibri" size="16.0" /></font>
+                                    <VBox.margin><Insets left="10.0" right="10.0" top="5.0" /></VBox.margin>
+                                </Button>
+
+                                <!-- NEW MESSAGES BUTTON ADDED HERE -->
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#handleMessages" prefHeight="43.0" prefWidth="223.0" styleClass="sidebar-button" text="• Messages">
+                                    <font><Font name="Calibri" size="16.0" /></font>
+                                    <VBox.margin><Insets left="10.0" right="10.0" top="5.0" /></VBox.margin>
+                                </Button>
+
+                                <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#LogOut" prefHeight="43.0" prefWidth="223.0" styleClass="sidebar-button" text="• Log Out">
+                                    <font><Font name="Calibri" size="16.0" /></font>
+                                    <VBox.margin><Insets left="10.0" right="10.0" top="5.0" /></VBox.margin>
+                                </Button>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </left>
+
+            <!-- CENTER CONTENT -->
+            <center>
+                <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #0b1324;" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox prefHeight="120.0" spacing="20.0" VBox.vgrow="NEVER">
+                            <VBox.margin><Insets bottom="10.0" left="20.0" right="20.0" top="20.0" /></VBox.margin>
+                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #111c30; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                                <padding><Insets left="15.0" /></padding>
+                                <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                    <Label text="Total Books" textFill="#c7d1e0"><font><Font name="System Bold" size="13.0" /></font></Label>
+                                    <Label fx:id="totalBooksLabel" text="0" textFill="#f2f5f9"><font><Font name="System Bold" size="24.0" /></font></Label>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #111c30; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                                <padding><Insets left="15.0" /></padding>
+                                <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                    <Label text="Total Members" textFill="#c7d1e0"><font><Font name="System Bold" size="13.0" /></font></Label>
+                                    <Label fx:id="totalMembersLabel" text="0" textFill="#f2f5f9"><font><Font name="System Bold" size="24.0" /></font></Label>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #111c30; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                                <padding><Insets left="15.0" /></padding>
+                                <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                    <Label text="Books Issued" textFill="#c7d1e0"><font><Font name="System Bold" size="13.0" /></font></Label>
+                                    <Label fx:id="booksIssuedLabel" text="0" textFill="#f2f5f9"><font><Font name="System Bold" size="24.0" /></font></Label>
+                                </VBox>
+                            </HBox>
+                            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="180.0" style="-fx-background-color: #111c30; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);" HBox.hgrow="ALWAYS">
+                                <padding><Insets left="15.0" /></padding>
+                                <VBox alignment="CENTER_LEFT" spacing="5.0">
+                                    <Label text="Pending Returns" textFill="#c7d1e0"><font><Font name="System Bold" size="13.0" /></font></Label>
+                                    <Label fx:id="PendingReturnsLabel" text="0" textFill="#8b0e20"><font><Font name="System Bold" size="24.0" /></font></Label>
+                                </VBox>
+                            </HBox>
+                        </HBox>
+
+                        <!-- CHARTS SECTION -->
+                        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                            <VBox.margin><Insets bottom="15.0" left="20.0" right="20.0" top="5.0" /></VBox.margin>
+                            <children>
+                                <VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #111c30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+                                    <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
+                                    <children>
+                                        <Label text="Inventory by Category" textFill="#f2f5f9"><font><Font name="System Bold" size="16.0" /></font></Label>
+                                        <PieChart fx:id="categoryPieChart" legendSide="BOTTOM" VBox.vgrow="ALWAYS" />
+                                    </children>
+                                </VBox>
+
+                                <VBox alignment="TOP_CENTER" spacing="10.0" style="-fx-background-color: #111c30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 5);" HBox.hgrow="ALWAYS">
+                                    <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
+                                    <children>
+                                        <Label text="Top Borrowers" textFill="#f2f5f9"><font><Font name="System Bold" size="16.0" /></font></Label>
+                                        <BarChart fx:id="activityBarChart" legendVisible="false" VBox.vgrow="ALWAYS">
+                                            <xAxis><CategoryAxis side="BOTTOM" tickLabelFill="#f2f5f9" /></xAxis>
+                                            <yAxis><NumberAxis side="LEFT" tickLabelFill="#f2f5f9" /></yAxis>
+                                        </BarChart>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+
+                        <!-- Footer Action -->
+                        <HBox alignment="CENTER" prefHeight="80.0">
+                            <VBox.margin><Insets bottom="20.0" left="20.0" right="20.0" top="5.0" /></VBox.margin>
+                            <Button mnemonicParsing="false" onAction="#handleIssueBook" prefHeight="50.0" prefWidth="350.0" styleClass="primary-button" text="Issue New Book">
+                                <font><Font name="System Bold" size="16.0" /></font>
+                            </Button>
+                        </HBox>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
