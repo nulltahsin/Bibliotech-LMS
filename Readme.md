@@ -1,11 +1,6 @@
 <div align="center">
 
-<br/>
 
-<!-- Replace the src below with your actual project banner/logo image -->
-<img src="assets/screenshots/banner.png" alt="BiblioTech Banner" width="100%" style="border-radius:12px"/>
-
-<br/><br/>
 
 # 📚 BiblioTech
 ### A Professional Library Management System
@@ -332,7 +327,7 @@ Bangladesh University of Engineering and Technology (BUET)
 
 ## 🙏 Acknowledgements
 
-- **Course:** CCSE 108 — Object Oriented Programming, BUET
+- **Course:** CSE 108 — Object Oriented Programming, BUET
 - [BellSoft Liberica JDK](https://bell-sw.com/) for the Full JDK with bundled JavaFX
 - [ControlsFX](https://controlsfx.github.io/) for extended JavaFX UI components
 - [TilesFX](https://github.com/HanSolo/tilesfx) by HanSolo for dashboard tiles
