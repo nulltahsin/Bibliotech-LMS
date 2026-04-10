@@ -16,7 +16,7 @@
 <p><i>A comprehensive, dual-role Library Management System built with JavaFX 21, SQLite, and a cinematic "Executive Dark" theme — engineered for real-world library operations.</i></p>
 
 <p>
-  <b>Course:</b> CCSE 108 — Object Oriented Programming &nbsp;|&nbsp;
+  <b>Course:</b> CSE 108 — Object Oriented Programming &nbsp;|&nbsp;
   <b>Department:</b> CSE, BUET
 </p>
 
